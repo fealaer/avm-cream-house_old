@@ -1,0 +1,13 @@
+.DS_Store
+
+dist
+.tmp
+node_modules
+
+
+.sass-cache
+*.swp
+
+# IDEA
+.idea
+*.iml
