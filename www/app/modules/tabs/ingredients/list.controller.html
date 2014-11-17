@@ -1,0 +1,18 @@
+<ion-view title="Ingredients">
+	<ion-content has-tabs="true" on-refresh="onRefresh()">
+
+		<ion-refresher></ion-refresher>
+		<ion-list scroll="false"
+		          on-refresh="onRefresh()"
+		          animation="fade-out">
+			<ion-item ng-repeat="item in items"
+			          item="item"
+			          class="item-avatar"
+			          ui-sref="tabs.ingredients.item({id: item.id})">
+				<img ng-src="{{item.image}}">
+
+				<h2>{{item.name}}</h2>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

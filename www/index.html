@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf8">
-  <meta name="viewport" content="width=device-width">
-  <title>My Steroids App</title>
+	<meta charset="utf8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>AVM App</title>
 
-  <link rel="stylesheet" href="/components/ionic/css/ionic.min.css" />
-  <link rel="stylesheet" href="/stylesheets/application.css" />
+	<link rel="stylesheet" href="/components/ionic/release/css/ionic.min.css"/>
+	<link rel="stylesheet" href="/stylesheets/application.css"/>
+	<link rel="stylesheet" href="/app/components/ratingButtons.directive.css"/>
+	<link rel="stylesheet" href="/app/components/ratingView.directive.css"/>
 
-  <script src="/javascripts/onerror.js"></script>
-  <script src="/javascripts/console.log.js"></script>
+	<script src="http://localhost/cordova.js"></script>
+	<script src="/components/steroids-js/steroids.js"></script>
 
-  <!-- cordova.js is served from localhost to ensure the correct version -->
-  <script src="http://localhost/cordova.js"></script>
-  <script src="/components/steroids-js/steroids.js"></script>
+	<!--ionic.bundle.js is a concatenation of: ionic.js, angular.js, angular-animate.js, angular-ui-router.js, and ionic-angular.js-->
+	<script src="/components/ionic/release/js/ionic.bundle.min.js"></script>
+	<script src="/components/lodash/dist/lodash.min.js"></script>
+	<script src="/components/restangular/dist/restangular.min.js"></script>
 
-  <script src="/javascripts/application.js"></script>
+
+
+	<!-- build:js({.tmp,app}) /scripts/app.js -->
+	<script src="/app/settings.js"></script>
+	<!--<script src="/templates.js"></script>-->
+	<script src="/app/app.js"></script>
+
+	<!--components-->
+	<script src="/app/components/libs.js"></script>
+	<script src="/app/components/config.js"></script>
+	<script src="/app/components/data.service.js"></script>
+	<script src="/app/components/infoTabs.controller.js"></script>
+	<script src="/app/components/join.filter.js"></script>
+	<script src="/app/components/ratingButtons.directive.js"></script>
+	<script src="/app/components/ratingView.directive.js"></script>
+	<script src="/app/components/settings.service.js"></script>
+
+	<!--modules-->
+	<script src="/app/modules/config.js"></script>
+	<script src="/app/modules/tabs/config.js"></script>
+	<script src="/app/modules/tabs/routes.js"></script>
+	<script src="/app/modules/tabs/drinks/config.js"></script>
+	<script src="/app/modules/tabs/drinks/routes.js"></script>
+	<script src="/app/modules/tabs/drinks/item.controller.js"></script>
+	<script src="/app/modules/tabs/drinks/list.controller.js"></script>
+	<script src="/app/modules/tabs/ingredients/config.js"></script>
+	<script src="/app/modules/tabs/ingredients/routes.js"></script>
+	<script src="/app/modules/tabs/ingredients/item.controller.js"></script>
+	<script src="/app/modules/tabs/ingredients/list.controller.js"></script>
+	<!--Always last-->
+	<script src="/app/bootstrap.js"></script>
+	<!-- endbuild -->
+
 </head>
-<body class="content">
-  <div class="padding">
-    <h1>Welcome to Steroids!</h1>
+<body>
+<ion-pane>
+	<ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+		<ion-nav-back-button class="button-icon ion-chevron-left">
+			<img ng-src="/icons/Icon-Small-40@3x.png" style="width: 32px; height: 32px;">
+		</ion-nav-back-button>
+	</ion-nav-bar>
 
-    <p>Awesome! This file is located at <strong>www/index.html</strong> &mdash; open it, change some text, save the file, and press enter in the Terminal window running <strong>$ steroids connect</strong>. The changes are updated to all connected devices. Cool, ain't it?</p>
-
-    <h2>Using AppGyver Scanner</h2>
-
-    <p>On iOS, to restart your current app or scan another app, <strong>tap and hold on the screen with three fingers.</strong>. This opens the Scanner context menu.</p>
-
-    <p>On Android, press the native back button to return to the device desktop. Open the Scanner again to scan another app or re-open your previous app.</p>
-
-    <h2>Start the tutorial</h2>
-
-    <p>Let's spend a few minutes on a short tutorial. Go to your Steroids project directory and run the command:</p>
-
-    <p><code>$ steroids generate tutorial begin</code></p>
-
-    <h2>Get in touch with us!</h2>
-
-    <p>Feel free to contact us at <a href="mailto:contact@appgyver.com">contact@appgyver.com</a>, we would love to get your feedback!</p>
-  </div>
+	<ion-nav-view animation="slide-left-right"></ion-nav-view>
+	<ion-footer-bar class="bar-stable">
+		<h1 class="title">Buy stuff!</h1>
+	</ion-footer-bar>
+</ion-pane>
 </body>
 </html>

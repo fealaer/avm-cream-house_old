@@ -1,0 +1,62 @@
+<ion-view title="{{item.name}}">
+	<ion-content>
+		<div class="list card">
+			<div class="item item-body">
+				<div>
+					<div class="image-buttons">
+						<button
+							class="button button-icon button-clear icon ion-bookmark"
+							ng-class="{'button-stable': !isSaved(item), 'button-positive': isSaved(item)}"
+							ng-click="toSave(item)"></button>
+						<button
+							class="button button-icon button-clear icon ion-checkmark"
+						  ng-class="{'button-stable': !isTried(item), 'button-balanced': isTried(item)}"
+						  ng-click="toTry(item)"></button>
+					</div>
+					<img class="card-image" ng-src="{{item.image}}">
+				</div>
+				<div ng-controller="InfoTabsCtrl">
+					<div class="item tabs tabs-secondary tabs-icon-top">
+						<a class="tab-item" href ng-click="setTab('info')"
+						   ng-class="{active: isSet('info')}">
+							<i class="icon ion-information-circled"></i>
+							Info
+						</a>
+						<a class="tab-item" href ng-click="setTab('rate')"
+						   ng-class="{active: isSet('rate')}">
+							<i class="icon ion-ios7-star"></i>
+							{{item.rate.rate}}
+						</a>
+						<a class="tab-item" href ng-click="setTab('comments')"
+						   ng-class="{active: isSet('comments')}">
+							<i class="icon ion-chatbox"></i>
+							{{item.comments.length}}
+						</a>
+						<a class="tab-item" href ng-click="setTab('ingredients')"
+						   ng-class="{active: isSet('ingredients')}">
+							<i class="icon ion-aperture"></i>
+							{{item.ingredients.length}}
+						</a>
+					</div>
+					<div ng-show="isSet('info')">
+						<p ng-show="item.info.vitamins">Vitamins: {{item.info.vitamins | join:', '}}</p>
+						<p ng-show="item.info.kcal">Kcal: {{item.info.kcal}}</p>
+						<p ng-show="item.info.density">Density: {{item.info.density}}</p>
+						<p ng-show="item.info.flavor">Flavor: {{item.info.flavor}}</p>
+					</div>
+					<div ng-show="isSet('rate')">
+						<rating-view data-rate="item.rate"></rating-view>
+					</div>
+					<div ng-show="isSet('comments')">
+						<blockquote ng-repeat="comment in item.comments">{{comment}}</blockquote>
+					</div>
+					<div ng-show="isSet('ingredients')">
+						<ul>
+							<li ng-repeat="ingredient in item.ingredients">{{ingredient}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

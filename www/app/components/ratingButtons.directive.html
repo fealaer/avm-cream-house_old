@@ -1,0 +1,11 @@
+<div>
+	<ol class="ratings-buttons">
+		<li ng-repeat="star in stars" ng-class="{active: model > $index}" ng-click="setRating($index + 1)">
+			<i class="icon" ng-class="{
+			'ion-ios7-star-outline': model < $index + 0.3,
+			'ion-ios7-star-half': model >= $index + 0.3 && model < $index + 0.7,
+			'ion-ios7-star': model >= $index + 0.7
+			}"></i>
+		</li>
+	</ol>
+</div>
