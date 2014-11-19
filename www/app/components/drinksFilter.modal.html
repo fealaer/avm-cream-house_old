@@ -1,0 +1,18 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-balanced">
+		<h1 class="title">Drinks filter</h1>
+	</ion-header-bar>
+	<ion-content>
+		<div class="list card">
+			<div class="item item-body">
+				<ion-radio ng-model="newFilter.info.flavor" ng-value="'Sour'">Sour</ion-radio>
+				<ion-radio ng-model="newFilter.info.flavor" ng-value="'Sweet'">Sweet</ion-radio>
+				<div class="button-bar">
+					<button class="button button-energized" ng-click="cancel()">Cancel</button>
+					<button class="button button-stable" ng-click="reset()">Reset</button>
+					<button class="button button-balanced" ng-click="apply()">Apply</button>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

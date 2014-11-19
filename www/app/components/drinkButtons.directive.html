@@ -1,0 +1,11 @@
+<div class="item-buttons">
+	<button
+		class="button button-icon button-clear icon ion-checkmark"
+		ng-class="{'button-stable': !isTried(item), 'button-balanced': isTried(item)}"
+		ng-disabled="isTried(item)"
+		ng-click="toTry(item)"></button>
+	<button
+		class="button button-icon button-clear icon ion-bookmark"
+		ng-class="{'button-stable': !isSaved(item), 'button-positive': isSaved(item)}"
+		ng-click="toSave(item)"></button>
+</div>

@@ -12,8 +12,8 @@ angular.module('avm.tabs.ingredients')
 					}
 				},
 				resolve: {
-					items: function (AvmRestangular) {
-						return AvmRestangular.all('ingredients').getList();
+					items: function (ingredientsService) {
+						return ingredientsService.getAll();
 					}
 				}
 			})
@@ -23,6 +23,11 @@ angular.module('avm.tabs.ingredients')
 					'ingredients@tabs': {
 						templateUrl: "app/modules/tabs/ingredients/item.controller.html",
 						controller: 'IngredientsItemCtrl'
+					}
+				},
+				resolve: {
+					item: function ($stateParams, ingredientsService) {
+						return ingredientsService.getOne($stateParams.id);
 					}
 				}
 			});

@@ -1,23 +1,21 @@
 <ion-view title="Drinks">
 	<ion-nav-buttons side="right">
-		<button class="button button-icon icon ion-funnel" ng-click="doSomething()">
-		</button>
-		<button class="button button-icon icon ion-ios7-search-strong" ng-click="doSomething()">
-		</button>
+		<filter-button default-filter="defaultFilter" current-filter="search" modal-template="app/components/drinksFilter.modal.html"></filter-button>
+		<button class="button button-icon icon ion-ios7-search-strong" ng-click="doSomething()"></button>
 	</ion-nav-buttons>
 	<ion-content has-tabs="true" on-refresh="onRefresh()">
 
 		<ion-refresher></ion-refresher>
 		<ion-list scroll="false" on-refresh="onRefresh()"
 		          animation="fade-out">
-			<ion-item ng-repeat="item in items"
-			          item="item"
-			          class="item-thumbnail-left"
-			          ui-sref="tabs.drinks.item({id: item.id})">
-				<img ng-src="{{item.image}}">
-				<h2>{{item.name}}</h2>
-				<p>{{item.price | currency:"Rs."}}</p>
-      </ion-item>
+			<ion-item ng-repeat="item in items | filter:search" item="item" class="item-thumbnail-left item item-complex">
+				<a class="item-content" ui-sref="tabs.drinks.item({id: item.id})">
+					<img ng-src="{{item.image}}">
+					<h2>{{item.name}}</h2>
+					<p>Rs. {{item.price | number:0}}</p>
+				</a>
+				<drink-buttons item="item"></drink-buttons>
+			</ion-item>
 		</ion-list>
 	</ion-content>
 </ion-view>

@@ -2,17 +2,8 @@
 	<ion-content>
 		<div class="list card">
 			<div class="item item-body">
-				<div>
-					<div class="image-buttons">
-						<button
-							class="button button-icon button-clear icon ion-bookmark"
-							ng-class="{'button-stable': !isSaved(item), 'button-positive': isSaved(item)}"
-							ng-click="toSave(item)"></button>
-						<button
-							class="button button-icon button-clear icon ion-checkmark"
-						  ng-class="{'button-stable': !isTried(item), 'button-balanced': isTried(item)}"
-						  ng-click="toTry(item)"></button>
-					</div>
+				<div class="card-image-wrapper">
+					<drink-buttons item="item"></drink-buttons>
 					<img class="card-image" ng-src="{{item.image}}">
 				</div>
 				<div ng-controller="InfoTabsCtrl">

@@ -14,7 +14,6 @@ angular.module('avm.components')
 			controller: [
 				'$scope', '$attrs', '$http', function ($scope, $attrs, $http) {
 					$scope.stars = [1, 2, 3, 4, 5];
-					console.log($scope.model);
 					$scope.setRating = function (rating) {
 						if (!$scope.readonly) {
 							$scope.model = rating;
