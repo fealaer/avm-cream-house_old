@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('avm.components')
-	.directive("drinkButtons", function ($ionicModal) {
+	.directive("drinkButtons", function ($rootScope) {
 		return {
 			restrict: 'E',
 			scope: {
-				item: '='
+				item: '=',
+				target: '@'
 			},
 			replace: true,
 			transclude: true,
@@ -16,54 +17,23 @@ angular.module('avm.components')
 					comment: ''
 				};
 
-				$scope.isTried = function (item) {
-					return item.tried;
+				$scope.isTried = function () {
+					return $scope.item.tried;
 				};
-				$scope.toTry = function (item) {
-					openModal();
-					item.tried = !item.tried;
+				$scope.toTry = function () {
+					$scope.item.tried = !$scope.item.tried;
 				};
 
-				$scope.isSaved = function (item) {
-					return item.saved;
+				$scope.isSaved = function () {
+					return $scope.item.saved;
 				};
-				$scope.toSave = function (item) {
-					item.saved = !item.saved;
+				$scope.toSave = function () {
+					$scope.item.saved = !$scope.item.saved;
 				};
 
 				$scope.save = function () {
-					closeModal();
+					$rootScope.toggle('drinkButtonModal.' + $scope.item.id, 'off');
 				};
-
-				$scope.cancel = function () {
-					closeModal();
-				};
-
-				$ionicModal.fromTemplateUrl('app/components/tryDrink.modal.html', {
-					scope: $scope,
-					animation: 'slide-in-up'
-				}).then(function (modal) {
-					$scope.modal = modal;
-
-					//Cleanup the modal when we're done with it!
-					$scope.$on('$destroy', function () {
-						$scope.modal.remove();
-					});
-					// Execute action on hide modal
-					$scope.$on('modal.hidden', function () {
-						// Execute action
-					});
-					// Execute action on remove modal
-					$scope.$on('modal.removed', function () {
-						// Execute action
-					});
-				});
-				function openModal () {
-					$scope.modal.show();
-				}
-				function closeModal () {
-					$scope.modal.hide();
-				}
 			}]
 		};
 	});

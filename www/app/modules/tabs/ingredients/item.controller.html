@@ -1,35 +1,56 @@
-<ion-view title="{{item.name}}">
-	<ion-content>
-		<div class="list card">
+<div content-for="title">
+	<span>{{item.name}}</span>
+</div>
+<div content-for="leftButton">
+	<div class="btn-group pull-left">
+		<div ng-click="selectState('tabs.ingredients')"
+		     class="btn btn-navbar">
+			<i class="fa fa-chevron-left fa-top-navbar"></i>
+		</div>
+	</div>
+</div>
+<div content-for="rightButton">
+</div>
+<div class="thumbnail">
+	<img class="card-image" ng-src="{{item.image}}">
 
-			<div class="item item-body">
-				<div class="card-image-wrapper">
-					<img class="card-image"  ng-src="{{item.image}}">
-				</div>
-				<div ng-controller="InfoTabsCtrl">
-					<div class="item tabs tabs-secondary tabs-icon-top">
-						<a class="tab-item" href ng-click="setTab('info')"
-						   ng-class="{active: isSet('info')}">
-							<i class="icon ion-information-circled"></i>
-							Info
-						</a>
-						<a class="tab-item" href ng-click="setTab('wiki')"
-						   ng-class="{active: isSet('wiki')}">
-							<i class="icon ion-social-wordpress"></i>
-							Wiki
-						</a>
-					</div>
-					<div ng-show="isSet('info')">
-						<p ng-show="item.info.vitamins">Vitamins: {{item.info.vitamins | join:', '}}</p>
-						<p ng-show="item.info.kcal">Kcal: {{item.info.kcal}}</p>
-						<p ng-show="item.info.density">Density: {{item.info.density}}</p>
-						<p ng-show="item.info.flavor">Flavor: {{item.info.flavor}}</p>
-					</div>
-					<div ng-show="isSet('wiki')">
-						{{item.description}})
-					</div>
-				</div>
+	<div class="caption">
+		<ul class="nav nav-tabs">
+			<li>
+				<a href="#info" toggle="on" parent-active-class="active">
+					<i class="fa fa-info-circle"></i> Info
+				</a>
+			</li>
+			<li>
+				<a href="#wiki" toggle="on" parent-active-class="active">
+					<i class="fa fa-book"></i> Wiki
+				</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane"
+			     toggleable
+			     active-class="active"
+			     default="active"
+			     id="info"
+			     exclusion-group="details">
+				<p ng-show="item.info.vitamins">Vitamins: {{item.info.vitamins | join:', '}}</p>
+
+				<p ng-show="item.info.kcal">Kcal: {{item.info.kcal}}</p>
+
+				<p ng-show="item.info.density">Density: {{item.info.density}}</p>
+
+				<p ng-show="item.info.flavor">Flavor: {{item.info.flavor}}</p>
+
+			</div>
+
+			<div class="tab-pane"
+			     toggleable
+			     active-class="active"
+			     id="wiki"
+			     exclusion-group="details">
+				{{item.description}})
 			</div>
 		</div>
-	</ion-content>
-</ion-view>
+	</div>
+</div>

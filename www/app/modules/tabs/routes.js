@@ -6,6 +6,7 @@ angular.module('avm.tabs')
 			.state('tabs', {
 				url: "/tabs",
 				abstract: true,
-				templateUrl: "app/modules/tabs/tabs.html"
+				templateUrl: "app/modules/tabs/tabs.html",
+				controller: 'TabsCtrl'
 			});
 	});

@@ -4,10 +4,14 @@ angular.module('avm.tabs.drinks')
 	.config(function ($stateProvider) {
 		$stateProvider
 			.state('tabs.drinks', {
-				url: "/drinks",
+				url: '/drinks?ordering&name&saved&tasted&info_flavor',
 				views: {
-					'drinks': {
-						templateUrl: "app/modules/tabs/drinks/list.controller.html",
+					'drinks@tabs': {
+						templateUrl: 'app/modules/tabs/drinks/list.controller.html',
+						controller: 'DrinksListCtrl'
+					},
+					'filterSidebar@tabs': {
+						templateUrl: 'app/components/drinksFilter.modal.html',
 						controller: 'DrinksListCtrl'
 					}
 				},
@@ -21,7 +25,7 @@ angular.module('avm.tabs.drinks')
 				url: '/{id:[a-z_]+}',
 				views: {
 					'drinks@tabs': {
-						templateUrl: "app/modules/tabs/drinks/item.controller.html",
+						templateUrl: 'app/modules/tabs/drinks/item.controller.html',
 						controller: 'DrinksItemCtrl'
 					}
 				},

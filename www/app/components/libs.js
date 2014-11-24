@@ -1,6 +1,8 @@
 'use strict';
 
 angular.module('avm.libs', [
-	'ionic',
-	'ngStorage'
+	'ngStorage',
+	"ngTouch",
+	'ui.router',
+	"mobile-angular-ui"
 ]);
