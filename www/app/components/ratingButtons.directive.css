@@ -1,7 +1,11 @@
 .ratings-buttons {
     overflow: hidden;
     padding: 0;
-    margin: 0;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    margin-bottom: 0px;
 }
 
 .ratings-buttons li {

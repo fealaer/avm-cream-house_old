@@ -1,21 +1,35 @@
-<ion-view title="Drinks">
-	<ion-nav-buttons side="right">
-		<filter-button default-filter="defaultFilter" current-filter="search" modal-template="app/components/drinksFilter.modal.html"></filter-button>
-		<button class="button button-icon icon ion-ios7-search-strong" ng-click="doSomething()"></button>
-	</ion-nav-buttons>
-	<ion-content has-tabs="true" on-refresh="onRefresh()">
-
-		<ion-refresher></ion-refresher>
-		<ion-list scroll="false" on-refresh="onRefresh()"
-		          animation="fade-out">
-			<ion-item ng-repeat="item in items | filter:search" item="item" class="item-thumbnail-left item item-complex">
-				<a class="item-content" ui-sref="tabs.drinks.item({id: item.id})">
-					<img ng-src="{{item.image}}">
-					<h2>{{item.name}}</h2>
-					<p>Rs. {{item.price | number:0}}</p>
+<div content-for="title">
+	<span>Drinks</span>
+</div>
+<div content-for="leftButton">
+	<div class="btn-group pull-left">
+		<div ng-click="toggle('mainSidebar')" class="btn btn-navbar sidebar-toggle">
+			<i class="fa fa-cog fa-top-navbar"></i>
+		</div>
+	</div>
+</div>
+<div content-for="rightButton">
+	<div class="btn-group pull-right">
+		<div ng-click="toggle('filterSidebar')" class="btn btn-navbar">
+			<i class="fa fa-filter fa-top-navbar"></i>
+		</div>
+	</div>
+</div>
+<div class="scrollable">
+	<div class="scrollable-content">
+		<div class="list-group">
+			<div class="list-group-item media" ng-repeat="item in items | filter:currentFilter" item="item"
+			     ui-sref="tabs.drinks.item({id: item.id})">
+				<a class="media-left">
+					<img ng-src="{{item.image}}" class="list-img">
 				</a>
-				<drink-buttons item="item"></drink-buttons>
-			</ion-item>
-		</ion-list>
-	</ion-content>
-</ion-view>
+				<div class="media-body">
+					<h4 class="media-heading">{{item.name}}</h4>
+					<p><i class="fa fa-star"></i> {{item.rate.rate | number:1}} (<i class="fa fa-user"></i> {{item.rate.based}})</p>
+					<p><strong>Rs.</strong> {{item.price | number:0}}</p>
+					<drink-buttons item="item" target="list"></drink-buttons>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

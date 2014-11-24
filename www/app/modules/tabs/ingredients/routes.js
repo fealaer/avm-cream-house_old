@@ -6,7 +6,7 @@ angular.module('avm.tabs.ingredients')
 			.state('tabs.ingredients', {
 				url: "/ingredients",
 				views: {
-					'ingredients': {
+					'ingredients@tabs': {
 						templateUrl: "app/modules/tabs/ingredients/list.controller.html",
 						controller: 'IngredientsListCtrl'
 					}

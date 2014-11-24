@@ -53,26 +53,29 @@ angular.module('avm', [
 //			.html5Mode(true)
 //			.hashPrefix('!');
 
-		// Configure default router
-		$urlRouterProvider.otherwise('/');
-
 		// Configure home state
-		$stateProvider
-			.state('index', {
-				url: '/',
-				controller: function ($scope, $state) {
-					$state.go('tabs.drinks');
-				}
-			});
+		// todo - something wrong with url: '/'
+//		$stateProvider
+//			.state('index', {
+//				url: '/',
+//				controller: function ($scope, $state) {
+//					console.log('test');
+//					$state.go('tabs.drinks');
+//				}
+//			});
+
+		// Configure default router
+		// todo - something wrong with url: '/'
+		$urlRouterProvider.otherwise('/tabs/drinks');
 	})
 
 	// Configure ionic loading
-	.constant('$ionicLoadingConfig', {
-		noBackdrop: true,
-		animation: 'fade-in',
-		delay: 200,
-		template: '<div class="loading-box"><i class="positive icon ion-loading-c"></i></div>'
-	})
+//	.constant('$ionicLoadingConfig', {
+//		noBackdrop: true,
+//		animation: 'fade-in',
+//		delay: 200,
+//		template: '<div class="loading-box"><i class="positive icon ion-loading-c"></i></div>'
+//	})
 
 	.run(function ($rootScope,
                  $settings,
@@ -81,7 +84,9 @@ angular.module('avm', [
                  $cacheFactory,
                  $location,
                  $window,
-                 $ionicLoading) {
+                 CaptureService
+//		,$ionicLoading
+		) {
 
 		// Make $settings global
 		$rootScope.$settings = $settings;
@@ -103,29 +108,33 @@ angular.module('avm', [
 			}
 		});
 
+		$rootScope.$on('$stateChangeStart', function() {
+			CaptureService.resetAll();
+		});
+
 		// Show loading on state changes
-		(function () {
-			$rootScope.$on('$stateChangeStart', function () {
-				$ionicLoading.hide();
-				$ionicLoading.show();
-			});
-			$rootScope.$on('$stateChangeSuccess', function () {
-				// Defer removing block-ui till other scripts finished.
-				$rootScope.$evalAsync(function () {
-					$ionicLoading.hide();
-				});
-			});
-			$rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
-				$ionicLoading.hide();
-				$log.error(error.message);
-			});
-			$rootScope.$on('$stateNotFound', function () {
-				$ionicLoading.hide();
-			});
-			$rootScope.$on('$serverError', function () {
-				$ionicLoading.hide();
-			});
-		})();
+//		(function () {
+//			$rootScope.$on('$stateChangeStart', function () {
+//				$ionicLoading.hide();
+//				$ionicLoading.show();
+//			});
+//			$rootScope.$on('$stateChangeSuccess', function () {
+//				// Defer removing block-ui till other scripts finished.
+//				$rootScope.$evalAsync(function () {
+//					$ionicLoading.hide();
+//				});
+//			});
+//			$rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+//				$ionicLoading.hide();
+//				$log.error(error.message);
+//			});
+//			$rootScope.$on('$stateNotFound', function () {
+//				$ionicLoading.hide();
+//			});
+//			$rootScope.$on('$serverError', function () {
+//				$ionicLoading.hide();
+//			});
+//		})();
 	});
 
 

@@ -1,8 +1,51 @@
-<ion-tabs class="tabs-icon-top tabs-positive tabs-top">
-	<ion-tab title="Drinks" icon="ion-ios7-wineglass" ui-sref="tabs.drinks">
-		<ion-nav-view name="drinks"></ion-nav-view>
-	</ion-tab>
-	<ion-tab title="Ingredients" icon="ion-social-apple" ui-sref="tabs.ingredients">
-		<ion-nav-view name="ingredients"></ion-nav-view>
-	</ion-tab>
-</ion-tabs>
+<div class="sidebar sidebar-right"
+     toggleable parent-active-class="sidebar-right-in" id="filterSidebar">
+	<ui-view name="filterSidebar"></ui-view>
+</div>
+<div class="app has-navbar-top has-navbar-bottom">
+	<div class="navbar navbar-app navbar-absolute-top">
+		<div class="navbar-brand navbar-brand-center" yield-to="title">
+		</div>
+		<div yield-to="leftButton">
+		</div>
+		<div yield-to="rightButton">
+		</div>
+	</div>
+	<div class="app-body" ng-class="{loading: loading}">
+		<div ng-show="loading" class="app-content-loading ng-hide">
+			<i class="fa fa-spinner fa-spin loading-spinner"></i>
+		</div>
+		<div class="app-content" ng-hide="loading">
+			<div class="scrollable">
+				<div class="scrollable-content">
+					<div class="section container-fluid">
+						<div class="tab-content">
+							<div class="tab-pane fade"
+							     ng-class="{'in active': ('tabs.drinks' | includedByState)}">
+								<ui-view name="drinks"></ui-view>
+							</div>
+							<div class="tab-pane fade"
+							     ng-class="{'in active': ('tabs.ingredients' | includedByState)}">
+								<ui-view name="ingredients"></ui-view>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="navbar navbar-app navbar-absolute-bottom">
+		<div class="btn-group justified">
+			<a class="btn"
+			   ng-click="selectState('tabs.drinks')"
+			   ng-class="{'active': ('tabs.drinks' | includedByState)}">
+				<i class="fa fa-glass fa-navbar"></i> Drinks
+			</a>
+			<a class="btn"
+			   ng-click="selectState('tabs.ingredients')"
+			   ng-class="{'active': ('tabs.ingredients' | includedByState)}">
+				<i class="fa fa-apple fa-navbar"></i> Ingredients
+			</a>
+		</div>
+	</div>
+</div>

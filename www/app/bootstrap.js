@@ -70,63 +70,162 @@
 			"name": "Kiwi Juice",
 			"price": 140,
 			"image": "/images/kiwi.png",
-			"description": "Juice from Kiwi"
+			"description": "Juice from Kiwi",
+			"rate": {
+				"rate": 3.9,
+				"based": 23452,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "orange_juice",
 			"name": "Orange Juice",
 			"price": 140,
 			"image": "/images/orange.png",
-			"description": "Juice from Orange"
+			"description": "Juice from Orange",
+			"rate": {
+				"rate": 4.3,
+				"based": 34252,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "watermelon_juice",
 			"name": "Watermelon Juice",
 			"price": 140,
 			"image": "/images/watermelon.jpg",
-			"description": "Juice from Watermelon"
+			"description": "Juice from Watermelon",
+			"rate": {
+				"rate": 4.0,
+				"based": 12675,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "apple_juice",
 			"name": "Apple Juice",
 			"price": 140,
 			"image": "/images/apple.png",
-			"description": "Juice from Apple"
+			"description": "Juice from Apple",
+			"rate": {
+				"rate": 4.4,
+				"based": 32423,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "banana_juice",
 			"name": "Banana Juice",
 			"price": 100,
 			"image": "/images/banana.png",
-			"description": "Juice from Banana"
+			"description": "Juice from Banana",
+			"rate": {
+				"rate": 4.1,
+				"based": 983425,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "beetroot_juice",
 			"name": "Beetroot Juice",
 			"price": 100,
 			"image": "/images/beetroot.png",
-			"description": "Juice from Beetroot"
+			"description": "Juice from Beetroot",
+			"rate": {
+				"rate": 4.3,
+				"based": 432522,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "lime_juice",
 			"name": "Lime Juice",
 			"price": 100,
 			"image": "/images/lime.png",
-			"description": "Juice from Lime"
+			"description": "Juice from Lime",
+			"rate": {
+				"rate": 3.6,
+				"based": 23452,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "lemon_juice",
 			"name": "Lemon Juice",
 			"price": 100,
 			"image": "/images/lemon.png",
-			"description": "Juice from Lemon"
+			"description": "Juice from Lemon",
+			"rate": {
+				"rate": 3.7,
+				"based": 45232,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		},
 		{
 			"id": "passion_fruit_juice",
 			"name": "Passion Fruit Juice",
 			"price": 120,
 			"image": "/images/passion_fruit.png",
-			"description": "Juice from Passion Fruit"
+			"description": "Juice from Passion Fruit",
+			"rate": {
+				"rate": 2.8,
+				"based": 39557,
+				"ratings": {
+					"one": 3015,
+					"two": 1185,
+					"three": 3235,
+					"four": 6840,
+					"five": 25282
+				}
+			}
 		}
 	];
 
@@ -214,6 +313,12 @@
 
 	localStorage.setItem('drinks', JSON.stringify(drinks));
 	localStorage.setItem('ingredients', JSON.stringify(ingredients));
+
+	if ('addEventListener' in document) {
+		document.addEventListener('DOMContentLoaded', function() {
+			FastClick.attach(document.body);
+		}, false);
+	}
 
 	angular.element(document).ready(function () {
 		angular.bootstrap(document, ['avm']);

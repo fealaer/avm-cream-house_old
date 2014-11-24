@@ -4,7 +4,7 @@
 steroids.config.name = "avm-cream-house"
 
 # ## Start Location
-steroids.config.location = "http://localhost/index.html"
+steroids.config.location = "http://localhost/index.html#/tabs/drinks"
 
 # ## Tab Bar
 # steroids.config.tabBar.enabled = true

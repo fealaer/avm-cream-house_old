@@ -1,11 +1,34 @@
-<div class="item-buttons">
+<div class="{{target}}-buttons">
 	<button
-		class="button button-icon button-clear icon ion-checkmark"
-		ng-class="{'button-stable': !isTried(item), 'button-balanced': isTried(item)}"
-		ng-disabled="isTried(item)"
-		ng-click="toTry(item)"></button>
+		class="btn btn-lg fa fa-check-square"
+		ng-class="{'btn-default': !isTried(), 'btn-success': isTried()}"
+		ng-disabled="isTried()"
+		href="{{'#drinkButtonModal.' + item.id}}"
+		ng-click="toTry(); $event.stopPropagation();"
+		toggle="on"></button>
 	<button
-		class="button button-icon button-clear icon ion-bookmark"
-		ng-class="{'button-stable': !isSaved(item), 'button-positive': isSaved(item)}"
-		ng-click="toSave(item)"></button>
+		class="btn btn-lg fa fa-bookmark"
+		ng-class="{'btn-default': !isSaved(), 'btn-primary': isSaved()}"
+		ng-click="toSave(); $event.stopPropagation();"></button>
+	<div overlay="{{'drinkButtonModal.' + item.id}}">
+		<h3 class="overlay-title">Hooray! You've just tried {{item.name}}!</h3>
+		<div>
+			<small>Please rate it and leave some comment about it. It'll help other people to choose their drinks!</small>
+			<rating-buttons ng-model="data.rate" class="text-center"></rating-buttons>
+			<div class="form-group row">
+				<div class="form-control-wrapper col-xs-12">
+					<textarea type="text"
+					          placeholder="Comment"
+					          ng-model="data.comment"
+					          rows="3"
+					          class="form-control"></textarea>
+				</div>
+			</div>
+
+			<div toggle="off" bubble target="{{'drinkButtonModal.' + item.id}}" class="btn-group justified">
+				<a class="btn btn-default">Cancel</a>
+				<a class="btn btn-primary" ng-click="save()">Save</a>
+			</div>
+		</div>
+	</div>
 </div>
